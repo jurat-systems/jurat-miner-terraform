@@ -8,6 +8,11 @@ terraform {
   required_version = "1.6.0"
 }
 
+resource "aws_key_pair" "jurat_key_pair" {
+  key_name = "jurat_key"
+  public_key = "~/.ssh/jurat_ec2_key.pem.pub"
+}
+
 resource "aws_security_group" "jurat_sg" {
   name        = "jurat-sg"
   description = "Security group for Jurat Miners"
@@ -40,7 +45,7 @@ resource "aws_security_group" "jurat_sg" {
 resource "aws_instance" "jurat_miner" {
   ami           = "jurat-ami"
   instance_type = var.instance_type
-  key_name      = aws_key_pair.generated_key.key_name
+  key_name      = jurat_key_pair.key_name
 
   root_block_device {
     volume_type = "gp3"
