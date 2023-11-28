@@ -22,6 +22,18 @@ install_terraform() {
     echo "Terraform installed successfully."
 }
 
+create_key_pair() {
+    key_name="jurat_ec2_key"
+    key_path="$HOME/.ssh/${key_name}.pem"
+    
+    echo "Generating a cryptographic key-pair to access your Jurat miner."
+    # Generate key pair
+    if [ ! -e "$key_path" ]; then    
+        ssh-keygen -t rsa -f "$key_path" -q -N ""
+        chmod 400 "$key_path"
+    fi
+}
+
 echo "Checking if terraform is available..."
 
 # Check if Terraform is installed
@@ -79,13 +91,7 @@ if [ -z "$aws_account_id" ]; then
 fi
 
 echo "Your AWS account ID is: $aws_account_id"
-
-echo "Generating a cryptographic key-pair to access your Jurat miner."
-# Generate key pair
-key_name="jurat_ec2_key"
-key_path="$HOME/.ssh/${key_name}.pem"
-ssh-keygen -t rsa -f "$key_path" -q -N ""
-chmod 400 "$key_path"
+create_key_pair
 
 echo "Key-pair was created, and can be retrieved from: ${key_path}. Keep it safe!"
 
@@ -95,4 +101,4 @@ echo "Key-pair was created, and can be retrieved from: ${key_path}. Keep it safe
 
 # Run Terraform
 terraform init
-terraform apply -auto-approve -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id"
+terraform apply -auto-approve -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id"
