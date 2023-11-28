@@ -11,7 +11,7 @@ echo -e "\e[0m"
 
 echo ""
 
-REQUIRED_VERSION="1.0.0"  # TERRAFORM VERSION
+REQUIRED_VERSION="1.6.0"  # TERRAFORM VERSION
 
 install_terraform() {
     echo "Installing Terraform version $REQUIRED_VERSION..."
@@ -90,8 +90,8 @@ chmod 400 "$key_path"
 echo "Key-pair was created, and can be retrieved from: ${key_path}. Keep it safe!"
 
 # Clone Terraform scripts
-git clone https://github.com/jurat-github-repo/terraform-ec2.git # TODO: fix this
-cd terraform-ec2
+#git clone https://github.com/jurat-github-repo/terraform-ec2.git # TODO: fix this
+#cd terraform-ec2
 
 # Run Terraform
 terraform init
