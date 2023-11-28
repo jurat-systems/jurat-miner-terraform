@@ -1,0 +1,2 @@
+# jurat-miner
+Jurat Miner
