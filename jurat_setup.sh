@@ -53,22 +53,27 @@ else
     fi
 fi
 
-echo ""
 
-echo "What AWS region would you like to use?"
-echo "1) us-east-1"
-echo "2) us-east-2"
-echo "3) us-west-1"
-echo "4) us-west-2"
-read -p "Enter your choice: " aws_region
 
-case $aws_region in
- 1) aws_region="us-east-1" ;;
- 2) aws_region="us-east-2" ;;
- 3) aws_region="us-west-1" ;;
- 4) aws_region="us-west-2" ;;
- *) echo "Invalid choice"; exit 1 ;;
-esac
+# For now, the region is hard coded to Oregon (us-west-2). Uncomment code bellow in order to allow user to select different regions
+aws_region = "us-west-2"
+
+#echo ""
+#
+#echo "What AWS region would you like to use?"
+#echo "1) us-east-1"
+#echo "2) us-east-2"
+#echo "3) us-west-1"
+#echo "4) us-west-2"
+#read -p "Enter your choice: " aws_region
+#
+#case $aws_region in
+# 1) aws_region="us-east-1" ;;
+# 2) aws_region="us-east-2" ;;
+# 3) aws_region="us-west-1" ;;
+# 4) aws_region="us-west-2" ;;
+# *) echo "Invalid choice"; exit 1 ;;
+#esac
 
 echo ""
 
