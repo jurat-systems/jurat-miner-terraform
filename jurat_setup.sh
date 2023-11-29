@@ -96,7 +96,7 @@ create_key_pair
 echo "Key-pair was created, and can be retrieved from: ${key_path}. Keep it safe!"
 
 echo ""
-read -p "Which email account would you like to use to receive alerts about the miner?" alert_email
+read -p "Which email account would you like to use to receive alerts about the miner? " alert_email
 
 # Clone Terraform scripts
 #git clone https://github.com/jurat-github-repo/terraform-ec2.git # TODO: fix this
@@ -104,5 +104,5 @@ read -p "Which email account would you like to use to receive alerts about the m
 
 # Run Terraform
 terraform init
-#terraform apply -auto-approve -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id" -var "alert_email=$alert_email"
 terraform plan -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id" -var "alert_email=$alert_email"
+terraform apply -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id" -var "alert_email=$alert_email"

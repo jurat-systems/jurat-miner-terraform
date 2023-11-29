@@ -34,3 +34,9 @@ variable "alert_email" {
   type = string
   description = "Email that will receive cloudwatch alerts about the miner"
 }
+
+variable "jurat_ami" {
+  type = string
+  description = "AMI to use for the Jurat Miner"
+  default = "prod-jbtc-node-fixed2_09-20-2023"
+}
