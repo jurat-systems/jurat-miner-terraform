@@ -12,6 +12,7 @@ echo -e "\e[0m"
 echo ""
 
 REQUIRED_VERSION="1.6.0"  # TERRAFORM VERSION
+export TF_LOG=DEBUG
 
 install_terraform() {
     echo "Installing Terraform version $REQUIRED_VERSION..."
