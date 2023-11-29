@@ -113,5 +113,4 @@ echo "alert_email = \"$alert_email\"" >> terraform.tfvars
 
 # Run Terraform
 terraform init
-terraform plan
 terraform apply
