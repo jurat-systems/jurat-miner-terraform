@@ -104,12 +104,12 @@ read -p "Which email account would you like to use to receive alerts about the m
 
 # Creating tfvars to make life easier while using terraform after the setup is done
 
-echo "instance_type=$instance_type\n" > terraform.tfvars
-echo "key_name=$key_name\n" >> terraform.tfvars
-echo "key_path=$key_path.pub\n" >> terraform.tfvars
-echo "aws_region=$aws_region\n" >> terraform.tfvars
-echo "aws_account_id=$aws_account_id\n" >> terraform.tfvars
-echo "alert_email=$alert_email\n" >> terraform.tfvars
+echo "instance_type=$instance_type" > terraform.tfvars
+echo "key_name=$key_name" >> terraform.tfvars
+echo "key_path=$key_path.pub" >> terraform.tfvars
+echo "aws_region=$aws_region" >> terraform.tfvars
+echo "aws_account_id=$aws_account_id" >> terraform.tfvars
+echo "alert_email=$alert_email" >> terraform.tfvars
 
 # Run Terraform
 terraform init
