@@ -59,6 +59,16 @@ resource "aws_instance" "jurat_miner" {
   }
 }
 
+resource "aws_sns_topic" "miner_sns_topic" {
+  name = var.miner_alarm_sns_topic
+}
+
+resource "aws_sns_topic_subscription" "email_alert_subscription" {
+  topic_arn = aws_sns_topic.miner_sns_topic.arn
+  protocol = "email"
+  endpoint = var.alert_email
+}
+
 resource "aws_cloudwatch_metric_alarm" "instance_status_check" {
   alarm_name          = "InstanceStatusCheckFailure"
   comparison_operator = "GreaterThanOrEqualToThreshold"

@@ -29,3 +29,8 @@ variable "miner_alarm_sns_topic" {
   description = "SNS Topic name for Miner Alarms"
   default = "jrat_miner_alarms"
 }
+
+variable "alert_email" {
+  type = string
+  description = "Email that will receive cloudwatch alerts about the miner"
+}
