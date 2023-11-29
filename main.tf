@@ -8,6 +8,10 @@ terraform {
   required_version = "1.6.0"
 }
 
+provider "aws" {
+  region = var.aws_region
+}
+
 resource "aws_key_pair" "jurat_key_pair" {
   key_name = "jurat_key"
   public_key = var.jurat_public_key
