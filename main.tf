@@ -75,7 +75,7 @@ resource "aws_cloudwatch_metric_alarm" "instance_status_check" {
     InstanceId = aws_instance.jurat_miner.id
   }
 
-  alarm_actions = ["arn:aws:sns:your-region:your-account-id:your-sns-topic"]
+  alarm_actions = ["arn:aws:sns:${var.aws_region}:${var.aws_account_id}:${var.miner_alarm_sns_topic}"]
 }
 
 resource "aws_cloudwatch_metric_alarm" "disk_usage_alarm_80" {
@@ -96,7 +96,7 @@ resource "aws_cloudwatch_metric_alarm" "disk_usage_alarm_80" {
     fstype     = "ext4"  # Modify this based on your file system type
   }
 
-  alarm_actions = ["arn:aws:sns:your-region:your-account-id:your-sns-topic"]
+  alarm_actions = ["arn:aws:sns:${var.aws_region}:${var.aws_account_id}:${var.miner_alarm_sns_topic}"]
 }
 
 resource "aws_cloudwatch_metric_alarm" "disk_usage_alarm_90" {
@@ -117,5 +117,5 @@ resource "aws_cloudwatch_metric_alarm" "disk_usage_alarm_90" {
     fstype     = "ext4"  # Modify this based on your file system type
   }
 
-  alarm_actions = ["arn:aws:sns:your-region:your-account-id:your-sns-topic"]
+  alarm_actions = alarm_actions = ["arn:aws:sns:${var.aws_region}:${var.aws_account_id}:${var.miner_alarm_sns_topic}"]
 }

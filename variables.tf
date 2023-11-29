@@ -23,3 +23,9 @@ variable "aws_account_id" {
   type = string
   description = "AWS account ID to be used"
 }
+
+variable "miner_alarm_sns_topic" {
+  type = string
+  description = "SNS Topic name for Miner Alarms"
+  default = "jrat_miner_alarms"
+}

@@ -101,4 +101,5 @@ echo "Key-pair was created, and can be retrieved from: ${key_path}. Keep it safe
 
 # Run Terraform
 terraform init
-terraform apply -auto-approve -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id"
+#terraform apply -auto-approve -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id"
+terraform plan -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id"
