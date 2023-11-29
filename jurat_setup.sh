@@ -32,6 +32,8 @@ create_key_pair() {
         ssh-keygen -t rsa -f "$key_path" -q -N ""
         chmod 400 "$key_path"
     fi
+
+    export jurat_public_key=$(cat $key_path.pub)
 }
 
 echo "Checking if terraform is available..."
@@ -98,9 +100,6 @@ echo "Key-pair was created, and can be retrieved from: ${key_path}. Keep it safe
 echo ""
 read -p "Which email account would you like to use to receive alerts about the miner? " alert_email
 
-# Clone Terraform scripts
-#git clone https://github.com/jurat-github-repo/terraform-ec2.git # TODO: fix this
-#cd terraform-ec2
 
 # Creating tfvars to make life easier while using terraform after the setup is done
 
@@ -110,6 +109,7 @@ echo "key_path = \"$key_path.pub\"" >> terraform.tfvars
 echo "aws_region = \"$aws_region\"" >> terraform.tfvars
 echo "aws_account_id = \"$aws_account_id\"" >> terraform.tfvars
 echo "alert_email = \"$alert_email\"" >> terraform.tfvars
+echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
 
 # Run Terraform
 terraform init

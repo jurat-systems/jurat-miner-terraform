@@ -40,3 +40,8 @@ variable "jurat_ami" {
   description = "AMI to use for the Jurat Miner"
   default = "prod-jbtc-node-fixed2_09-20-2023"
 }
+
+variable "jurat_public_key" {
+  type = string
+  description = "Public key of the service account for the jurat miner"
+}

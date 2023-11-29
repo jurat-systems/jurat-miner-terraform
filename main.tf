@@ -10,7 +10,7 @@ terraform {
 
 resource "aws_key_pair" "jurat_key_pair" {
   key_name = "jurat_key"
-  public_key = var.key_path
+  public_key = var.public_key
 }
 
 resource "aws_security_group" "jurat_sg" {
