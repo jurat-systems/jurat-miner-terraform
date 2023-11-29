@@ -54,7 +54,6 @@ else
 fi
 
 
-
 # For now, the region is hard coded to Oregon (us-west-2). Uncomment code bellow in order to allow user to select different regions
 aws_region = "us-west-2"
 
