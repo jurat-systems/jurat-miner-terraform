@@ -102,7 +102,16 @@ read -p "Which email account would you like to use to receive alerts about the m
 #git clone https://github.com/jurat-github-repo/terraform-ec2.git # TODO: fix this
 #cd terraform-ec2
 
+# Creating tfvars to make life easier while using terraform after the setup is done
+
+echo "instance_type=$instance_type\n" > terraform.tfvars
+echo "key_name=$key_name\n" >> terraform.tfvars
+echo "key_path=$key_path.pub\n" >> terraform.tfvars
+echo "aws_region=$aws_region\n" >> terraform.tfvars
+echo "aws_account_id=$aws_account_id\n" >> terraform.tfvars
+echo "alert_email=$alert_email\n" >> terraform.tfvars
+
 # Run Terraform
 terraform init
-terraform plan -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id" -var "alert_email=$alert_email"
-terraform apply -var "instance_type=$instance_type" -var "key_name=$key_name" -var "key_path=$key_path.pub" -var "aws_region=$aws_region" -var "aws_account_id=$aws_account_id" -var "alert_email=$alert_email"
+terraform plan
+terraform apply
