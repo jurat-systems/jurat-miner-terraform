@@ -117,5 +117,5 @@ resource "aws_cloudwatch_metric_alarm" "disk_usage_alarm_90" {
     fstype     = "ext4"  # Modify this based on your file system type
   }
 
-  alarm_actions = alarm_actions = ["arn:aws:sns:${var.aws_region}:${var.aws_account_id}:${var.miner_alarm_sns_topic}"]
+  alarm_actions = ["arn:aws:sns:${var.aws_region}:${var.aws_account_id}:${var.miner_alarm_sns_topic}"]
 }
