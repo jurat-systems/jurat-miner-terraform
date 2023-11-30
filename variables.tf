@@ -27,7 +27,7 @@ variable "aws_account_id" {
 variable "miner_alarm_sns_topic" {
   type = string
   description = "SNS Topic name for Miner Alarms"
-  default = "jrat_miner_alarms"
+  default = "jurat_miner_alarms"
 }
 
 variable "alert_email" {

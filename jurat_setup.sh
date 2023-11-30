@@ -55,7 +55,7 @@ fi
 
 
 # For now, the region is hard coded to Oregon (us-west-2). Uncomment code bellow in order to allow user to select different regions
-aws_region = "us-west-2"
+export aws_region="us-west-2"
 
 #echo ""
 #
@@ -118,4 +118,5 @@ echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
 
 # Run Terraform
 terraform init
-terraform apply
+terraform plan
+#terraform apply
