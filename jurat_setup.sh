@@ -118,5 +118,5 @@ echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
 
 # Run Terraform
 terraform init
-terraform plan
-#terraform apply
+#terraform plan
+terraform apply
