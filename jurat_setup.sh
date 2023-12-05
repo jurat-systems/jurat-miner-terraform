@@ -11,6 +11,9 @@ echo -e "\e[0m"
 
 echo ""
 
+git clone https://github.com/jurat-systems/jurat-miner-terraform.git
+cd jurat-miner-terraform
+
 REQUIRED_VERSION="1.6.0"  # TERRAFORM VERSION
 export TF_LOG=DEBUG
 
