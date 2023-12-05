@@ -121,3 +121,31 @@ echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
 
 # Run Terraform
 terraform init && terraform apply #-auto-approve
+
+#!/bin/bash
+
+# Fetch the public IP address of the EC2 instance with the tag 'JuratMiner'
+instance_ip=$(aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=JuratMiner" \
+    --query "Reservations[*].Instances[*].PublicIpAddress" \
+    --output text)
+
+# Check if the IP address was successfully retrieved
+if [ -z "$instance_ip" ]; then
+    echo "Failed to retrieve the IP address for JuratMiner. Please ensure the instance is running and tagged correctly."
+    exit 1
+fi
+
+# Update or Add the Host configuration in the .ssh/config file
+ssh_config="$HOME/.ssh/config"
+
+# Check if the entry already exists
+if grep -q "Host juratminer" "$ssh_config"; then
+    # Update the existing entry
+    sed -i "/^Host juratminer/,+3s/^  HostName .*/  HostName $instance_ip/" "$ssh_config"
+else
+    # Add a new entry
+    echo -e "\nHost juratminer\n  HostName $instance_ip\n  User admin\n  IdentityFile ~/.ssh/jurat_ec2_key.pem" >> "$ssh_config"
+fi
+
+echo "SSH configuration updated. You can now connect using 'ssh juratminer'."
