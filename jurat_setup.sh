@@ -18,7 +18,7 @@ install_terraform() {
     echo "Installing Terraform version $REQUIRED_VERSION..."
     wget https://releases.hashicorp.com/terraform/${REQUIRED_VERSION}/terraform_${REQUIRED_VERSION}_linux_amd64.zip
     unzip terraform_${REQUIRED_VERSION}_linux_amd64.zip
-    sudo mv terraform /usr/local/bin/
+    sudo mv terraform /usr/local/bin/ || true
     rm terraform_${REQUIRED_VERSION}_linux_amd64.zip
     echo "Terraform installed successfully."
 }
@@ -40,11 +40,11 @@ create_key_pair() {
 echo "Checking if terraform is available..."
 
 # Check if Terraform is installed
-if ! command -v terraform &> /dev/null; then
+if ! command -v terraform &> /dev/null || true; then
     install_terraform
 else
     # Terraform is installed, check version
-    INSTALLED_VERSION=$(terraform version -json | jq -r '.terraform_version')
+    INSTALLED_VERSION=$(terraform version -json | jq -r '.terraform_version') || true
     if [ "$INSTALLED_VERSION" = "$REQUIRED_VERSION" ]; then
         echo "Required Terraform version $REQUIRED_VERSION is already installed."
     else
@@ -86,7 +86,7 @@ case $instance_size in
   1) instance_type="t2.small" ;;
   2) instance_type="t2.medium" ;;
   3) instance_type="t2.large" ;;
-  *) echo "Invalid choice"; exit 1 ;;
+  *) echo "Invalid choice"; exit 1 ;;  
 esac
 
 echo ""
@@ -120,3 +120,4 @@ echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
 terraform init
 #terraform plan
 terraform apply
+ 
