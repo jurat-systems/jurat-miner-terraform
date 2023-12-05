@@ -117,7 +117,4 @@ echo "alert_email = \"$alert_email\"" >> terraform.tfvars
 echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
 
 # Run Terraform
-terraform init
-#terraform plan
-terraform apply
- 
+terraform init && terraform apply #-auto-approve
