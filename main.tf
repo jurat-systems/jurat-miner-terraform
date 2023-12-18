@@ -52,7 +52,8 @@ resource "aws_instance" "jurat_miner" {
   key_name      = aws_key_pair.jurat_key_pair.key_name
 
   depends_on = [
-    aws_key_pair.jurat_key_pair
+    aws_key_pair.jurat_key_pair,
+    aws_security_group.jurat_sg
   ]
 
   root_block_device {
