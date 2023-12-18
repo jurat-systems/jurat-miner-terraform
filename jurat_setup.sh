@@ -146,7 +146,7 @@ else
     echo "jurat-sg not found."
 fi
 
-terraform import aws_security_group.jurat_sg $jurat_sg || true
+terraform import aws_security_group.jurat_sg $jurat_sg_id || true
 
 # Create the resources
 terraform apply -auto-approve
