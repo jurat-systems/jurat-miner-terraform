@@ -11,7 +11,11 @@ echo -e "\e[0m"
 
 echo ""
 
-git clone https://github.com/jurat-systems/jurat-miner-terraform.git
+if [ -d ".git" ]; then
+    git pull
+else
+    git clone https://github.com/jurat-systems/jurat-miner-terraform.git
+fi
 cd jurat-miner-terraform
 
 REQUIRED_VERSION="1.6.0"  # TERRAFORM VERSION
