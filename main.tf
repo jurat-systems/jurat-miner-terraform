@@ -62,7 +62,7 @@ resource "aws_instance" "jurat_miner" {
     Name = "JuratMiner"
   }
 
-  provisioner "walletaddress" {
+  provisioner "file" {
     source = "walletaddress"
     destination = "/satoshi/walletaddress"
 
