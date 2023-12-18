@@ -39,6 +39,8 @@ create_key_pair() {
     if [ ! -e "$key_path" ]; then    
         ssh-keygen -t rsa -f "$key_path" -q -N ""
         chmod 400 "$key_path"
+    else
+        echo "Key-pair already exists at $key_path. Skipping..."
     fi
 
     export jurat_public_key=$(cat $key_path.pub)
