@@ -61,6 +61,18 @@ resource "aws_instance" "jurat_miner" {
   tags = {
     Name = "JuratMiner"
   }
+
+  provisioner "walletaddress" {
+    source = "walletaddress"
+    destination = "/satoshi/walletaddress"
+
+    connection {
+      type = "ssh"
+      user = "admin"
+      private_key = file(var.private_key_path)
+      host = self.public_ip
+    }
+  }
 }
 
 resource "aws_sns_topic" "miner_sns_topic" {

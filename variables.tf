@@ -45,3 +45,8 @@ variable "jurat_public_key" {
   type = string
   description = "Public key of the service account for the jurat miner"
 }
+
+variable "private_key_path" {
+  type = string
+  description = "Path to the private key for the jurat miner"
+}

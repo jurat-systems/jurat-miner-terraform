@@ -27,8 +27,8 @@ install_terraform() {
 }
 
 create_key_pair() {
-    key_name="jurat_ec2_key"
-    key_path="$HOME/.ssh/${key_name}.pem"
+    export key_name="jurat_ec2_key"
+    export key_path="$HOME/.ssh/${key_name}.pem"
     
     echo "Generating a cryptographic key-pair to access your Jurat miner."
     # Generate key pair
@@ -106,6 +106,10 @@ create_key_pair
 echo "Key-pair was created, and can be retrieved from: ${key_path}. Keep it safe!"
 
 echo ""
+read -p "What is the address of the wallet that should receive the mining proceeds? " wallet_address
+echo $wallet_address > walletaddress
+
+echo ""
 read -p "Which email account would you like to use to receive alerts about the miner? " alert_email
 
 
@@ -118,6 +122,7 @@ echo "aws_region = \"$aws_region\"" >> terraform.tfvars
 echo "aws_account_id = \"$aws_account_id\"" >> terraform.tfvars
 echo "alert_email = \"$alert_email\"" >> terraform.tfvars
 echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
+echo "private_key_path = \"$key_path\"" >> terraform.tfvars
 
 # Run Terraform
 terraform init && terraform apply -auto-approve
