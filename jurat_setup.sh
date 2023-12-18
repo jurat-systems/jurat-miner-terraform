@@ -124,8 +124,28 @@ echo "alert_email = \"$alert_email\"" >> terraform.tfvars
 echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
 echo "private_key_path = \"$key_path\"" >> terraform.tfvars
 
-# Run Terraform
-terraform init && terraform apply -auto-approve
+# Initialize Terraform
+terraform init
+
+# Import key pair and security group if they exist
+terraform import aws_key_pair.jurat_key_pair jurat_key || true
+
+security_groups_json=$(aws ec2 describe-security-groups --query "SecurityGroups[*].{ID:GroupId,Name:GroupName}" --output json)
+
+# Use jq to parse JSON and extract the Group ID of jurat-sg
+jurat_sg_id=$(echo "$security_groups_json" | jq -r '.[] | select(.Name=="jurat-sg") | .ID')
+
+# Check if the jurat-sg ID was found
+if [ -n "$jurat_sg_id" ]; then
+    echo "Security Group ID of jurat-sg: $jurat_sg_id"
+else
+    echo "jurat-sg not found."
+fi
+
+terraform import aws_security_group.jurat_sg $jurat_sg || true
+
+# Create the resources
+terraform apply -auto-approve
 
 #!/bin/bash
 
