@@ -51,6 +51,10 @@ resource "aws_instance" "jurat_miner" {
   instance_type = var.instance_type
   key_name      = aws_key_pair.jurat_key_pair.key_name
 
+  depends_on = [
+    aws_key_pair.jurat_key_pair
+  ]
+
   root_block_device {
     volume_type = "gp3"
     volume_size = 1000
