@@ -39,7 +39,7 @@ At some point we may make the mining software open source, allowing miners to jo
 
 9. Do not trade on non-public information. We do not believe that we have provided you any material non-public information about Jurat or the JTC coin. Nevertheless, we cannot guaranty that that is the case. To the extent you have concerns that you possess such information, whether through us or others, please reach out to us before trading the coin so that we can better understand the issue and determine how best to proceed.
 
-I have read and agree to the forgoing terms of use. I understand that my failure to comply with these terms may result in the termination of my license to mine JTC and the forfeiture of any coins that I have mined. I also understand that my failure to comply with these terms may result in legal action against me by Jurat or others.
+I have read and agree to the forgoing terms of use.
 
 
 (Press 'q' to exit the Terms of Use and Continue)
