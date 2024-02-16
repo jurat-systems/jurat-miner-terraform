@@ -110,7 +110,7 @@ fi
 
 
 # For now, the region is hard coded to Oregon (us-west-2). Uncomment code bellow in order to allow user to select different regions
-export aws_region="us-west-2"
+export aws_region="us-east-2"
 
 #echo ""
 #
