@@ -103,7 +103,7 @@ resource "aws_cloudwatch_metric_alarm" "instance_status_check" {
   actions_enabled     = true
 
   dimensions = {
-    InstanceId = aws_instance.jurat_miner.id
+    InstanceId = aws_instance.jurat_miner_test.id
   }
 
   alarm_actions = ["arn:aws:sns:${var.aws_region}:${var.aws_account_id}:${var.miner_alarm_sns_topic}"]
@@ -122,7 +122,7 @@ resource "aws_cloudwatch_metric_alarm" "disk_usage_alarm_80" {
   actions_enabled     = true
 
   dimensions = {
-    InstanceId = aws_instance.jurat_miner.id
+    InstanceId = aws_instance.jurat_miner_test.id
     path       = "/"
     fstype     = "ext4"  # Modify this based on your file system type
   }
@@ -143,7 +143,7 @@ resource "aws_cloudwatch_metric_alarm" "disk_usage_alarm_90" {
   actions_enabled     = true
 
   dimensions = {
-    InstanceId = aws_instance.jurat_miner.id
+    InstanceId = aws_instance.jurat_miner_test.id
     path       = "/"
     fstype     = "ext4"  # Modify this based on your file system type
   }
