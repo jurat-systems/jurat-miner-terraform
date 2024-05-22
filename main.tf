@@ -46,7 +46,7 @@ resource "aws_security_group" "jurat_sg" {
   }
 }
 
-resource "aws_instance" "jurat_miner" {
+resource "aws_instance" "jurat_miner_test" {
   ami           = var.jurat_ami
   instance_type = var.instance_type
   key_name      = aws_key_pair.jurat_key_pair.key_name
