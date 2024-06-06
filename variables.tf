@@ -38,7 +38,7 @@ variable "alert_email" {
 variable "jurat_ami" {
   type = string
   description = "AMI to use for the Jurat Miner"
-  default = "ami-07b9e868cd79bbdc0"
+  default = "ami-0445067903fd1e26e"
 }
 
 variable "jurat_public_key" {
