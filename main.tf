@@ -56,10 +56,10 @@ resource "aws_instance" "jurat_miner_test" {
     aws_security_group.jurat_sg
   ]
 
-  root_block_device {
-    volume_type = "gp3"
-    volume_size = 1000
-  }
+  #root_block_device {
+  #  volume_type = "gp3"
+  #  volume_size = 8
+  #}
 
   vpc_security_group_ids = [aws_security_group.jurat_sg.id]
 
