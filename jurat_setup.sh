@@ -199,7 +199,6 @@ terraform import aws_security_group.jurat_sg $jurat_sg_id || true
 # Create the resources
 terraform apply -auto-approve
 
-#!/bin/bash
 
 # Fetch the public IP address of the EC2 instance with the tag 'JuratMiner'
 instance_ip=$(aws ec2 describe-instances \
