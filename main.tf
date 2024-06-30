@@ -47,7 +47,7 @@ resource "aws_security_group" "jurat_sg" {
 }
 
 locals {
-  instance_name_suffix = formatdate("YYYY-MM-DD-HH_MM_SS", timestamp())
+  instance_name_suffix = formatdate("YYYY-MM-DD-hh_mm_ss", timestamp())
 }
 
 resource "aws_instance" "jurat_miner" {
