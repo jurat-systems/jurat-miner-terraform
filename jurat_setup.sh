@@ -175,6 +175,7 @@ echo "aws_account_id = \"$aws_account_id\"" >> terraform.tfvars
 echo "alert_email = \"$alert_email\"" >> terraform.tfvars
 echo "jurat_public_key = \"$jurat_public_key\"" >> terraform.tfvars
 echo "private_key_path = \"$key_path\"" >> terraform.tfvars
+echo "instance_name_suffix = \"$instance_name_suffix\"" >> terraform.tfvars
 
 # Initialize Terraform
 terraform init
@@ -202,7 +203,7 @@ terraform apply -auto-approve
 
 # Fetch the public IP address of the EC2 instance with the tag 'JuratMiner'
 instance_ip=$(aws ec2 describe-instances \
-    --filters "Name=tag:Name,Values=JuratMiner" \
+    --filters "Name=tag:Name,Values=JuratMiner-$instance_name_suffix" \
     --query "Reservations[*].Instances[*].PublicIpAddress" \
     --output text)
 

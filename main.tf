@@ -46,10 +46,6 @@ resource "aws_security_group" "jurat_sg" {
   }
 }
 
-locals {
-  instance_name_suffix = formatdate("YYYY-MM-DD-hh_mm_ss", timestamp())
-}
-
 resource "aws_instance" "jurat_miner" {
   ami           = var.jurat_ami
   instance_type = var.instance_type
@@ -68,7 +64,7 @@ resource "aws_instance" "jurat_miner" {
   vpc_security_group_ids = [aws_security_group.jurat_sg.id]
 
   tags = {
-    Name = "JuratMiner-${local.instance_name_suffix}"
+    Name = "JuratMiner-${var.instance_name_suffix}"
   }
 
   provisioner "file" {
