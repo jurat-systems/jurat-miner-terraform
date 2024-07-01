@@ -96,6 +96,9 @@ generate_instance_name_suffix() {
     export instance_name_suffix=$(date +"%Y-%m-%d-%H_%M_%S")
 }
 
+generate_instance_name_suffix
+echo "The new instance name will be: JuratMiner-$instance_name_suffix"
+
 echo "Checking if terraform is available..."
 
 # Check if Terraform is installed
