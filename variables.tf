@@ -54,5 +54,4 @@ variable "private_key_path" {
 variable "instance_name_suffix" {
   type = string
   description = "Timestamp to append to the Jurat Miner name tag"
-  default = formatdate("YYYY-MM-DD-hh_mm_ss", timestamp())
 }

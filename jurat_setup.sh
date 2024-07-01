@@ -92,6 +92,10 @@ create_key_pair() {
     export jurat_public_key=$(cat $key_path.pub)
 }
 
+generate_instance_name_suffix() {
+    export instance_name_suffix=$(date +"%Y-%m-%d-%H_%M_%S")
+}
+
 echo "Checking if terraform is available..."
 
 # Check if Terraform is installed
@@ -202,10 +206,7 @@ terraform apply -auto-approve
 
 
 # Fetch the public IP address of the EC2 instance with the tag 'JuratMiner'
-instance_ip=$(aws ec2 describe-instances \
-    --filters "Name=tag:Name,Values=JuratMiner-$instance_name_suffix" \
-    --query "Reservations[*].Instances[*].PublicIpAddress" \
-    --output text)
+instance_ip=$(terraform output -raw instance_public_ip)
 
 # Check if the IP address was successfully retrieved
 if [ -z "$instance_ip" ]; then

@@ -80,6 +80,11 @@ resource "aws_instance" "jurat_miner" {
   }
 }
 
+output "instance_public_ip" {
+  description = "Public IP address of the Jurat-Miner instance"
+  value       = aws_instance.jurat_miner.public_ip
+}
+
 resource "aws_sns_topic" "miner_sns_topic" {
   name = var.miner_alarm_sns_topic
 }
