@@ -57,11 +57,9 @@ done
 
 echo ""
 
-if [ -d ".git" ]; then
-    git pull
-else
-    git clone https://github.com/jurat-systems/jurat-miner-terraform.git
-fi
+# always fetch the latest version of the terraform scripts
+rm -rf jurat-miner-terraform/
+git clone https://github.com/jurat-systems/jurat-miner-terraform.git
 cd jurat-miner-terraform
 
 REQUIRED_VERSION="1.6.0"  # TERRAFORM VERSION
